@@ -1,6 +1,7 @@
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 const sliderRight = document.querySelector('.slider-right');
+const sliderLeft = document.querySelector('.slider-left');
 
 const items = [
   'img/01.jpg',
@@ -10,7 +11,25 @@ const items = [
   'img/05.jpg'
 ];
 
-console.log(items);
+const title = [
+  'Svezia',
+  'Svizzera',
+  'Gran Bretagna',
+  'Germania',
+  'Paradise'
+];
+
+const text = [
+  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+  'Lorem ipsum',
+  'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+  'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
+];
+
+// console.log(items);
+// console.log(title);
+// console.log(text);
 
 
 const itemsList = document.getElementsByClassName('item');
@@ -21,15 +40,45 @@ let index = 0;
 
 
 
-//ciclo per creare items nello slider-right
+// inizio ciclo
 for(let i=0; i < items.length; i++){
+
+  //image slider left
+  const image = document.createElement('div');
+  image.className = 'image';
+  if(i === 0) image.classList.add('active');
+  
+  image.innerHTML = 
+  `
+    <img src="${items[i]}" alt="">
+   
+  `;
+
+  const textBox = document.createElement('div');
+  textBox.className = 'text-box';
+
+  textBox.innerHTML = 
+  `
+    <h4>${title[i]}</h4>
+    <p>${text[i]}</p>
+  `;
+
+  // console.log(textBox);
+
+  image.append(textBox);
+  sliderLeft.append(image);  
+
+
+  //items nello slider-right
   const item = document.createElement('div');
   item.className = 'item';
   if(i === 0) item.classList.add('active');
     
   item.innerHTML = `<img src="${items[i]}" alt="">`;
   sliderRight.append(item);    
-}
+
+
+};
 
 
 
